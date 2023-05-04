@@ -27,3 +27,6 @@ replay_pid*
 src/main/resources/application.properties
 target/classes/application.properties
 target/classes/import.sql
+src/main/resources/application.properties
+src/main/resources/import.sql
+target/classes/application.properties
