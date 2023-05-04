@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.limaodev.productapi.entities.Product;
 import com.limaodev.productapi.services.ProductService;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
-@RequestMapping(value = "/products")
+@RequestMapping("/products")
+@AllArgsConstructor
+@Slf4j
 public class ProductController {
 
     private ProductService productService;
@@ -23,13 +28,15 @@ public class ProductController {
     @PostMapping("/products")
     @ResponseStatus(HttpStatus.CREATED)
     public Product createProduct(@RequestBody Product product) {
+        log.info("Creating new product: [{}]", product);
         return productService.createProduct(product);
     }
 
     // [GET] all products
-    @GetMapping("/products")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Product> getAllProducts() {
+        log.info("Listing all products");
         return productService.listAllProducts();
     }
 

@@ -20,7 +20,6 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-
     //List all registered products
     public List<Product> listAllProducts(){
         return productRepository.findAll();

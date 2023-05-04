@@ -13,23 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 import com.limaodev.productapi.entities.Department;
 import com.limaodev.productapi.services.DepartmentService;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping( value = "/departments")
+@AllArgsConstructor
+@Slf4j
 public class DepartmentController {
     
     private DepartmentService departmentService;
 
     // [CREATE] new Department
-    @PostMapping("/departments")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Department createDepartment(@RequestBody Department department) {
+        log.info("Creating new department: [{}]", department);
         return departmentService.createDepartment(department);
     }
 
     // [GET] all Departments
-    @GetMapping("/departments")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Department> getAllDepartments() {
+        log.info("Linsting all departments");
         return departmentService.listAllDepartments();
     }
 
